@@ -11,6 +11,7 @@ app.use(express.static(__dirname + '/public'));
 hbs.registerPartials(__dirname + '/views/partials'); // partials files added
   // in all the pages
 
+const port = process.env.PORT || 3000;
 app.use((req,res,next)=>{   // this whole to save time to server.log
   var now=new Date().toString();
   var log=`${now} : ${req.method} ${req.url}`;
@@ -46,4 +47,6 @@ app.get('/bad',(req,res)=>{
         error:'bad req!!!!!!'
     });
 });
-app.listen(3000);
+app.listen(port,()=>{
+  console.log(`app is up on port ${port}`);
+});
