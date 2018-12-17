@@ -14,7 +14,7 @@ hbs.registerPartials(__dirname + '/views/partials'); // partials files added
 const port = process.env.PORT || 3000;
 app.use((req,res,next)=>{   // this whole to save time to server.log
   var now=new Date().toString();
-  var log=`${now} : ${req.method} ${req.url}`;
+  var log=`${now} : ${req.method} ${req.url} and port : ${port}`;
 
 console.log(log);
   fs.appendFile('server.log', log + '\n',(err)=>{
@@ -33,7 +33,11 @@ next();
 
 
 app.get('/', (req,res)=>{
-     res.send("Hello !");
+     res.render("home.hbs");
+});
+
+app.get('/project',(req,res)=>{
+    res.render('project.hbs');
 });
 
 app.get('/about', (req,res)=>{
