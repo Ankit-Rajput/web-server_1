@@ -40,6 +40,10 @@ app.get('/project',(req,res)=>{
     res.render('project.hbs');
 });
 
+app.get('/index',(req,res)=>{
+    res.render('index.hbs');
+});
+
 app.get('/about', (req,res)=>{
   res.render('about.hbs',{
     ptitle: 'AboUt'
